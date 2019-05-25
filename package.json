@@ -15,7 +15,7 @@
 	},
 	"scripts": {
 		"dev:react": "react-scripts-ts start",
-		"dev:css": "stylus -w src/stylus -o src/css",
+		"dev:css": "stylus -w src/stylus -o -c src/css",
 		"start": "yarn dev:react",
 		"test": "react-scripts-ts test --env=jsdom",
 		"eject": "react-scripts-ts eject",
