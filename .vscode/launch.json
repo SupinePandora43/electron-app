@@ -1,0 +1,59 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+			"type": "node",
+			"request": "launch",
+			"name": "(Electron) Launch Main",
+			"args": [
+				"." //C:/samples/electron-app
+			],
+			"env": {
+				"NODE_ENV": "development"
+			},
+			"runtimeArgs": [
+				"--remote-debugging-port=9223"
+			],
+			"stopOnEntry": false,
+			"runtimeExecutable": "electron",//F:/Users/Андрей/AppData/Local/Yarn/bin/electron.cmd
+			"cwd": ".",
+			"outputCapture": "std",
+			"timeout": 30000
+		},
+		{
+			"name": "(Electron) Attach Renderer",
+			"type": "chrome",
+			"request": "attach",
+			"port": 9223,
+			//"webRoot": "C:/samples/electronapp",
+			"timeout": 30000
+		},
+		{
+			"type": "chrome",
+			"request": "launch",
+			"name": "(React) Launch",
+			"runtimeExecutable": "F:/Program Files/Google/Chrome/Application/chrome.exe",
+			"url": "http://localhost:3000",
+			"timeout": 60000,
+			"webRoot": "${workspaceFolder}/src",
+			"userDataDir": "C:/samples/electron-app/.chrome",
+			"sourceMaps": true,
+			"sourceMapPathOverrides": {
+				"webpack:///./src/*": "${webRoot}/*"
+			},
+			"runtimeArgs": [
+				"--disable-session-crashed-bubble",
+				"--disable-infobars"
+			]
+		},
+	],
+	"compounds": [
+		{
+			"name": "(Electron): All",
+			"configurations": [
+				"(Electron) Launch Main",
+				"(Electron) Attach Renderer"
+			]
+		}
+	]
+}
