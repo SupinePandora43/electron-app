@@ -6,7 +6,7 @@
 			"request": "launch",
 			"name": "(Electron) Launch Main",
 			"args": [
-				"." //C:/samples/electron-app
+				"${workspaceFolder}/"
 			],
 			"env": {
 				"NODE_ENV": "development"
@@ -15,8 +15,8 @@
 				"--remote-debugging-port=9223"
 			],
 			"stopOnEntry": false,
-			"runtimeExecutable": "electron",//F:/Users/Андрей/AppData/Local/Yarn/bin/electron.cmd
-			"cwd": ".",
+			"runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd",
+			"cwd": "${workspaceFolder}/",
 			"outputCapture": "std",
 			"timeout": 30000
 		},
