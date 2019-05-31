@@ -14,22 +14,12 @@
 		"three": "^0.102.1"
 	},
 	"scripts": {
-		"start": "yarn dev:react",
-
-		"dev": "npm-run-all --parallel dev:*",
-		"build": "npm-run-all --parallel build:*",
-		"eject": "react-scripts-ts eject",
-		"test": "react-scripts-ts test --env=jsdom",
-		
-		"predeploy": "yarn build",
+		"test": "react-app-rewired test --scripts-version react-scripts-ts --env=jsdom",
+		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build",
-
-		"dev:react": "react-scripts-ts start",
-		"dev:css": "stylus -w src/stylus -o -c src/css",
+		"start": "react-app-rewired start --scripts-version react-scripts-ts",
 		"electron": "electron .",
-
-		"build:react": "react-scripts-ts build",
-		"build:css": "stylus src/stylus -o src/css -c"
+		"build": "react-app-rewired build --scripts-version react-scripts-ts"
 	},
 	"devDependencies": {
 		"@types/animejs": "^2.0.2",
@@ -38,8 +28,9 @@
 		"@types/react": "^16.8.8",
 		"@types/react-dom": "^16.8.3",
 		"electron": "^5.0.2",
+		"react-app-rewire-stylus-modules": "^0.0.2",
+		"react-app-rewired": "^1.6.2",
 		"react-scripts-ts": "3.1.0",
-		"stylus": "^0.54.5",
 		"typescript": "3.4.5"
 	}
 }

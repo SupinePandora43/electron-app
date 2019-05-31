@@ -1,5 +1,5 @@
 import * as React from 'react'
-import './css/App.css'
+import './stylus/App.styl'
 import logo from './logo.svg'
 import { Button } from "@material-ui/core"
 
@@ -15,12 +15,12 @@ class App extends React.Component {
 		new MyPixel(25, 26),
 		new MyPixel(25, 27)
 	]
-	public animation : anime.AnimeInstance
-	public counter:HTMLParagraphElement
+	public animation: anime.AnimeInstance
+	public counter: HTMLParagraphElement
 	public apple: MyPixel | null = null
 	public canvasPixelsSize: number = 10
 	public canvasPixels: number
-	public direction:string = "up" //up right down left
+	public direction: string = "up" //up right down left
 	constructor(props: any) {
 		super(props)
 		// @ts-ignore
@@ -30,22 +30,22 @@ class App extends React.Component {
 		window.onkeypress = (event: KeyboardEvent) => {
 			switch (event.key) {
 				case "w":
-					if (this.direction !== "down") {
+					if (this.direction != "down") {
 						this.direction = "up"
 					}
 					break
 				case "s":
-					if (this.direction !== "up") {
+					if (this.direction != "up") {
 						this.direction = "down"
 					}
 					break
 				case "a":
-					if(this.direction!=="right"){
+					if (this.direction != "right") {
 						this.direction = "left"
 					}
 					break
 				case "d":
-					if(this.direction!=="left"){
+					if (this.direction != "left") {
 						this.direction = "right"
 					}
 					break
@@ -61,8 +61,14 @@ class App extends React.Component {
 					<h1 className="App-title">TypeScript + React + Hot reload (Slow) + Debug</h1>
 				</header>
 				<Button id="App-button" className="App-button" variant="contained" color="primary">Message</Button>
-				<p ref={(node)=>{this.counter = node as HTMLParagraphElement}} className="counter">0</p>
-				<canvas ref={(node) => { this.canvas = node as HTMLCanvasElement; this.mContext = this.canvas.getContext('2d') as CanvasRenderingContext2D; this.canvasPixels = this.canvas.height / this.canvasPixelsSize || this.canvas.width / this.canvasPixelsSize }} id="App-canvas" width="500px" height="500px" />
+				<p ref={(node) => { this.counter = node as HTMLParagraphElement }} className="counter">0</p>
+				<canvas ref={
+					(node) => {
+						this.canvas = node as HTMLCanvasElement
+						this.mContext = this.canvas.getContext('2d') as CanvasRenderingContext2D
+						this.canvasPixels = this.canvas.height / this.canvasPixelsSize || this.canvas.width / this.canvasPixelsSize
+					}}
+					id="App-canvas" width="500px" height="500px" />
 			</div>
 		);
 	}
@@ -84,9 +90,9 @@ class App extends React.Component {
 		// this.mContext.fillText("GAME OVER", this.canvas.width / 2, this.canvas.height / 2)
 	}
 	public thinkApple() {
-		
-		if (this.apple === null) {
-			while (this.apple === null || JSON.stringify(this.snakeMyPixels).includes(JSON.stringify(this.apple))) {
+
+		if (this.apple == null) {
+			while (this.apple == null || JSON.stringify(this.snakeMyPixels).includes(JSON.stringify(this.apple))) {
 				this.apple = new MyPixel(Math.floor(Math.random() * this.canvasPixels), Math.floor(Math.random() * this.canvasPixels))
 			}
 		}
@@ -106,9 +112,9 @@ class App extends React.Component {
 		const oldMyPixels = JSON.parse(JSON.stringify(this.snakeMyPixels))
 		loop1:
 		for (let i = 0; i < this.snakeMyPixels.length; i++) {
-			if (this.direction === "") { break }
+			if (this.direction == "") { break }
 			const Mypixel = this.snakeMyPixels[i]
-			if (i === 0) {
+			if (i == 0) {
 				switch (this.direction) {
 					case "up":
 						if (Mypixel.y - 1 < 0) {
@@ -154,7 +160,7 @@ class App extends React.Component {
 		this.thinkApple()
 		this.thinkSnake()
 		this.drawSnake()
-		this.counter.textContent = "Score: " + String(this.snakeMyPixels.length-3)
+		this.counter.textContent = "Score: " + String(this.snakeMyPixels.length - 3)
 		setTimeout(() => {
 			this.raf = requestAnimationFrame((t) => { this.update(t) })
 		}, 60);

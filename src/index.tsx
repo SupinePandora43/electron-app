@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './App';
-import './css/index.css';
+import './stylus/index.styl';
 import registerServiceWorker from './registerServiceWorker';
 import anime from 'animejs'
 

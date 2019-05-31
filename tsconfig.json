@@ -29,12 +29,8 @@
 	"exclude": [
 		"node_modules",
 		"build",
-		"scripts",
-		"acceptance-tests",
 		"webpack",
-		"webpack.config.js",
-		"jest",
-		"src/setupTests.ts",
+		"config-overrides.js",
 		"src/main.js",
 		".chrome"
 	]
