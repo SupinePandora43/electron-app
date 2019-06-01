@@ -10,7 +10,7 @@ class App extends React.Component {
 	public raf: any
 	public canvas: HTMLCanvasElement
 	public mContext: CanvasRenderingContext2D
-	public snakeMyPixels = [
+	public snakeMyPixels: MyPixel[] = [
 		new MyPixel(25, 25),
 		new MyPixel(25, 26),
 		new MyPixel(25, 27)
@@ -20,33 +20,43 @@ class App extends React.Component {
 	public apple: MyPixel | null = null
 	public canvasPixelsSize: number = 10
 	public canvasPixels: number
-	public direction: string = "up" //up right down left
+	public directionCurrent: string = "up"
+	public direction: string = "up"
+	public loaded: boolean = false
+	public colors = {
+		background: "#1f5f1f",
+		snake_HEAD: "#9f0f9f",
+		snake_TAIL: "#4f9f9f",
+		snake_TAIL_END: "#4f9f5f",
+		apple: "#f33"
+	}
 	constructor(props: any) {
 		super(props)
 		// @ts-ignore
 		window.components = window.components || {}
 		// @ts-ignore
 		window.components.App = this
+		window.onload = () => { this.tick_main(); this.loaded = true }
 		window.onkeypress = (event: KeyboardEvent) => {
 			switch (event.key) {
 				case "w":
-					if (this.direction != "down") {
-						this.direction = "up"
+					if (this.directionCurrent != "down") {
+						this.directionCurrent = "up"
 					}
 					break
 				case "s":
-					if (this.direction != "up") {
-						this.direction = "down"
+					if (this.directionCurrent != "up") {
+						this.directionCurrent = "down"
 					}
 					break
 				case "a":
-					if (this.direction != "right") {
-						this.direction = "left"
+					if (this.directionCurrent != "right") {
+						this.directionCurrent = "left"
 					}
 					break
 				case "d":
-					if (this.direction != "left") {
-						this.direction = "right"
+					if (this.directionCurrent != "left") {
+						this.directionCurrent = "right"
 					}
 					break
 			}
@@ -73,33 +83,52 @@ class App extends React.Component {
 		);
 	}
 	public drawBackground() {
-		this.mContext.fillStyle = "#1f5f1f"
+		this.mContext.fillStyle = this.colors.background
 		this.mContext.fillRect(0, 0, this.canvas.width, this.canvas.height)
 	}
 	public drawMyPixel(p: MyPixel, color: string) {
 		this.mContext.fillStyle = color
 		this.mContext.fillRect(p.x * this.canvasPixelsSize, p.y * this.canvasPixelsSize, this.canvasPixelsSize, this.canvasPixelsSize)
 	}
+	public drawSnake_HEAD(pixel:MyPixel){
+		this.drawMyPixel(pixel, this.colors.snake_HEAD)
+	}
+	public drawSnake_TAIL(pixel:MyPixel){
+		this.drawMyPixel(pixel, this.colors.snake_TAIL)
+	}
+	public drawSnake_TAIL_END(pixel:MyPixel){
+		this.drawMyPixel(pixel, this.colors.snake_TAIL_END)
+	}
 	public drawSnake() {
-		this.snakeMyPixels.forEach((Mypixel) => {
-			this.drawMyPixel(Mypixel, "#4f9f9f")
-		});
+		for (let i = 0; i < this.snakeMyPixels.length; i++) {
+			const pixel: MyPixel = this.snakeMyPixels[i];
+			if(i==0){
+				this.drawSnake_HEAD(pixel)
+			}else if(i==this.snakeMyPixels.length){
+				this.drawSnake_TAIL_END(pixel)
+			}else{
+				this.drawSnake_TAIL(pixel)
+			}
+		}
+	}
+	public drawApple(){
+		if(this.apple!=null){
+			this.drawMyPixel(this.apple as MyPixel, this.colors.apple)
+		}
 	}
 	public GAMEOVER() {
 		this.mContext.fillStyle = "#f00"
 		// this.mContext.fillText("GAME OVER", this.canvas.width / 2, this.canvas.height / 2)
 	}
-	public thinkApple() {
-
-		if (this.apple == null) {
+	public thinkApple(generate?:boolean) {
+		if (this.apple == null||generate) {
 			while (this.apple == null || JSON.stringify(this.snakeMyPixels).includes(JSON.stringify(this.apple))) {
 				this.apple = new MyPixel(Math.floor(Math.random() * this.canvasPixels), Math.floor(Math.random() * this.canvasPixels))
 			}
 		}
-		this.drawMyPixel(this.apple as MyPixel, "#f33")
 		if (JSON.stringify(this.snakeMyPixels).includes(JSON.stringify(this.apple))) {
 			this.snakeMyPixels.push(JSON.parse(JSON.stringify(this.snakeMyPixels[this.snakeMyPixels.length - 1])))
-			this.apple = null
+			this.thinkApple(true)
 			this.animation = this.animation || anime({
 				targets: this.counter,
 				rotate: '1turn',
@@ -110,6 +139,7 @@ class App extends React.Component {
 	}
 	public thinkSnake() {
 		const oldMyPixels = JSON.parse(JSON.stringify(this.snakeMyPixels))
+		this.direction = this.directionCurrent
 		loop1:
 		for (let i = 0; i < this.snakeMyPixels.length; i++) {
 			if (this.direction == "") { break }
@@ -155,15 +185,19 @@ class App extends React.Component {
 			}
 		}
 	}
-	public update(this: App, timestamp?: number) {
-		this.drawBackground()
+	public async tick_main() {
 		this.thinkApple()
 		this.thinkSnake()
+		setTimeout(async () => {
+			await this.tick_main()
+		}, 60);
+	}
+	public tick_renderer(this: App, timestamp?: number) {
+		this.drawBackground()
+		this.drawApple()
 		this.drawSnake()
 		this.counter.textContent = "Score: " + String(this.snakeMyPixels.length - 3)
-		setTimeout(() => {
-			this.raf = requestAnimationFrame((t) => { this.update(t) })
-		}, 60);
+		this.raf = requestAnimationFrame((t) => { this.tick_renderer(t) })
 		// this.mContext.clearRect(0, 0, this.canvas.width, this.canvas.height)
 		// this.mContext.fillStyle = "#000"
 		// this.mContext.fillRect(Math.random() * 100, 0, 100, 100)
@@ -172,7 +206,7 @@ class App extends React.Component {
 
 	}
 	public componentDidMount() {
-		this.raf = requestAnimationFrame((t) => { this.update(t) })
+		this.raf = requestAnimationFrame((t) => { this.tick_renderer(t) })
 	}
 	public componentWillUnmount() {
 		this.raf = cancelAnimationFrame(this.raf)

@@ -1,0 +1,20 @@
+language: node_js
+cache: yarn
+node_js:
+- "11"
+os:
+- linux
+branches:
+  only:
+  - master
+install:
+- yarn install
+script:
+- yarn build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  on:
+    branch: gh-pages

@@ -4,5 +4,4 @@ yarn-error.log*
 build/
 node_modules/
 build
-src/css/App.css
-src/css/index.css
+.vscode/.extensions
