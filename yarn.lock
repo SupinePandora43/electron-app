@@ -8253,10 +8253,10 @@ text-table@0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-three@^0.102.1:
-  version "0.102.1"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.102.1.tgz#fc08b6b11860cf59e8cd45b7e90e34d1d1a8cbd6"
-  integrity sha512-btHBdww/Es4vdBkB2GjTE9mpj0vy8tgtxkX7ne7uxySXV8zoGxWJv1N88BydxnCqvAfmD4ZUTqPeESO7oDgeOQ==
+three@^0.105.1:
+  version "0.105.1"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.105.1.tgz#323fc31e19b25eec408a84f8401ea6dbe42a32bb"
+  integrity sha512-Oa6dfF3qsgS/mmeNB+nKgcQBq71Ucxv8TdmVS+lNjLzG/GAIgvrTDTKmtvxXd7tXDv7RXmEprcmzO3JiT0UDsA==
 
 throat@^3.0.0:
   version "3.2.0"
