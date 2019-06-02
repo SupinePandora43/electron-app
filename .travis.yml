@@ -11,7 +11,7 @@ install:
 - yarn install
 script:
 - yarn build
-- yarn test || exit 0
+- yarn test || echo "Hello World!"
 - yarn coverage
 deploy:
   provider: pages
