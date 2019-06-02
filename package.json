@@ -4,6 +4,23 @@
 	"private": true,
 	"main": "src/main.js",
 	"homepage": "https://supinepandora43.github.io/electron-app",
+	"jest": {
+		"collectCoverageFrom": [
+			"src/**/*.test.{js,jsx,ts,tsx}",
+			"!<rootDir>/node_modules/"
+		],
+		"coverageThreshold": {
+			"global": {
+				"branches": 1,
+				"functions": 90,
+				"lines": 90,
+				"statements": 90
+			}
+		},
+		"coverageReporters": [
+			"text"
+		]
+	},
 	"dependencies": {
 		"@material-ui/core": "^4.0.0",
 		"@material-ui/icons": "^4.0.0",
@@ -14,7 +31,8 @@
 		"three": "^0.105.1"
 	},
 	"scripts": {
-		"test": "react-app-rewired test --scripts-version react-scripts-ts --env=jsdom",
+		"test": "react-app-rewired test -- --coverage --scripts-version react-scripts-ts --env=jsdom",
+		"coverage": "codecov",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build",
 		"start": "react-app-rewired start --scripts-version react-scripts-ts",
@@ -31,6 +49,7 @@
 		"react-app-rewire-stylus-modules": "^0.0.2",
 		"react-app-rewired": "1.6.2",
 		"react-scripts-ts": "^3.1.0",
-		"typescript": "^3.5.1"
+		"typescript": "^3.5.1",
+		"codecov": "^3.1.0"
 	}
 }
