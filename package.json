@@ -31,7 +31,7 @@
 		"three": "^0.105.1"
 	},
 	"scripts": {
-		"test": "react-app-rewired test -- --coverage --scripts-version react-scripts-ts --env=jsdom",
+		"test": "react-app-rewired test --coverage --scripts-version react-scripts-ts --env=jsdom",
 		"coverage": "codecov",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build",
