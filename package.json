@@ -7,7 +7,7 @@
 	"jest": {
 		"collectCoverageFrom": [
 			"src/**/*.test.{js,jsx,ts,tsx}",
-			"!**/node_modules/"
+			"!**/node_modules/**"
 		],
 		"coverageThreshold": {
 			"global": {
