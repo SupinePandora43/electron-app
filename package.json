@@ -28,13 +28,13 @@
 		"three": "^0.105.1"
 	},
 	"scripts": {
-		"test": "react-app-rewired test --coverage --scripts-version react-scripts-ts --env=jsdom",
+		"test": "cross-env NODE_ENV=development react-app-rewired test --coverage --scripts-version react-scripts-ts --env=jsdom",
 		"coverage": "codecov",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build",
-		"start": "react-app-rewired start --scripts-version react-scripts-ts",
+		"start": "cross-env NODE_ENV=development react-app-rewired start --scripts-version react-scripts-ts",
 		"electron": "electron .",
-		"build": "react-app-rewired build --scripts-version react-scripts-ts"
+		"build": "cross-env NODE_ENV=production react-app-rewired build --scripts-version react-scripts-ts"
 	},
 	"devDependencies": {
 		"@types/animejs": "^2.0.2",

@@ -33,6 +33,7 @@
 		"config-overrides.js",
 		"src/main.js",
 		".chrome",
+		"coverage",
 		"async-test.js"
 	]
 }
