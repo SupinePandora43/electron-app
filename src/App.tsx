@@ -90,29 +90,29 @@ class App extends React.Component {
 		this.mContext.fillStyle = color
 		this.mContext.fillRect(p.x * this.canvasPixelsSize, p.y * this.canvasPixelsSize, this.canvasPixelsSize, this.canvasPixelsSize)
 	}
-	public drawSnake_HEAD(pixel:MyPixel){
+	public drawSnake_HEAD(pixel: MyPixel) {
 		this.drawMyPixel(pixel, this.colors.snake_HEAD)
 	}
-	public drawSnake_TAIL(pixel:MyPixel){
+	public drawSnake_TAIL(pixel: MyPixel) {
 		this.drawMyPixel(pixel, this.colors.snake_TAIL)
 	}
-	public drawSnake_TAIL_END(pixel:MyPixel){
+	public drawSnake_TAIL_END(pixel: MyPixel) {
 		this.drawMyPixel(pixel, this.colors.snake_TAIL_END)
 	}
 	public drawSnake() {
 		for (let i = 0; i < this.snakeMyPixels.length; i++) {
 			const pixel: MyPixel = this.snakeMyPixels[i];
-			if(i==0){
+			if (i == 0) {
 				this.drawSnake_HEAD(pixel)
-			}else if(i==this.snakeMyPixels.length){
+			} else if (i == this.snakeMyPixels.length - 1) {
 				this.drawSnake_TAIL_END(pixel)
-			}else{
+			} else {
 				this.drawSnake_TAIL(pixel)
 			}
 		}
 	}
-	public drawApple(){
-		if(this.apple!=null){
+	public drawApple() {
+		if (this.apple != null) {
 			this.drawMyPixel(this.apple as MyPixel, this.colors.apple)
 		}
 	}
@@ -120,8 +120,8 @@ class App extends React.Component {
 		this.mContext.fillStyle = "#f00"
 		// this.mContext.fillText("GAME OVER", this.canvas.width / 2, this.canvas.height / 2)
 	}
-	public thinkApple(generate?:boolean) {
-		if (this.apple == null||generate) {
+	public thinkApple(generate?: boolean) {
+		if (this.apple == null || generate) {
 			while (this.apple == null || JSON.stringify(this.snakeMyPixels).includes(JSON.stringify(this.apple))) {
 				this.apple = new MyPixel(Math.floor(Math.random() * this.canvasPixels), Math.floor(Math.random() * this.canvasPixels))
 			}
@@ -186,6 +186,7 @@ class App extends React.Component {
 		}
 	}
 	public async tick_main() {
+		await null
 		this.thinkApple()
 		this.thinkSnake()
 		setTimeout(async () => {
@@ -193,10 +194,12 @@ class App extends React.Component {
 		}, 60);
 	}
 	public tick_renderer(this: App, timestamp?: number) {
-		this.drawBackground()
-		this.drawApple()
-		this.drawSnake()
-		this.counter.textContent = "Score: " + String(this.snakeMyPixels.length - 3)
+		if (this.loaded) {
+			this.drawBackground()
+			this.drawApple()
+			this.drawSnake()
+			this.counter.textContent = "Score: " + String(this.snakeMyPixels.length - 3)
+		}
 		this.raf = requestAnimationFrame((t) => { this.tick_renderer(t) })
 		// this.mContext.clearRect(0, 0, this.canvas.width, this.canvas.height)
 		// this.mContext.fillStyle = "#000"
