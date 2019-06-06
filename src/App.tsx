@@ -27,7 +27,7 @@ class App extends React.Component {
 		background: "#1f5f1f",
 		snake_HEAD: "#9f0f9f",
 		snake_TAIL: "#4f9f9f",
-		snake_TAIL_END: "#4f9f5f",
+		snake_TAIL_END: "#1e4495",
 		apple: "#f33"
 	}
 	constructor(props: any) {
@@ -133,6 +133,7 @@ class App extends React.Component {
 				targets: this.counter,
 				rotate: '1turn',
 				duration: 800,
+				autoplay: false
 			})
 			this.animation.restart()
 		}
