@@ -27,7 +27,7 @@ class App extends React.Component {
 		background: "#1f5f1f",
 		snake_HEAD: "#9f0f9f",
 		snake_TAIL: "#4f9f9f",
-		snake_TAIL_END: "#000",
+		snake_TAIL_END: "#1e4495",
 		apple: "#f33"
 	}
 	constructor(props: any) {
@@ -68,7 +68,7 @@ class App extends React.Component {
 				<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
 				<header className="App-header">
 					<img src={logo} className="App-logo" alt="logo" />
-					<h1 className="App-title">TypeScript + React + Hot reload (Slow) + Debug</h1>
+					<h1 className="App-title">TypeScript + React + Hot reload (Slow) + Debug + WHY DONT WORK</h1>
 				</header>
 				<Button id="App-button" className="App-button" variant="contained" color="primary">Message</Button>
 				<p ref={(node) => { this.counter = node as HTMLParagraphElement }} className="counter">0</p>
