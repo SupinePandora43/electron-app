@@ -10,14 +10,15 @@ branches:
 install:
 - yarn install
 script:
-- yarn build
+# - yarn build
 - yarn test || echo "Hello World!"
 - yarn coverage
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  keep_history: true
-  local_dir: build
-  on:
-    branch: master
+- yarn deploy
+# deploy:
+#   provider: pages
+#   skip_cleanup: true
+#   github_token: $GITHUB_TOKEN
+#   keep_history: true
+#   local_dir: build
+#   on:
+#     branch: master
