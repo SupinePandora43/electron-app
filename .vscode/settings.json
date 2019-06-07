@@ -1,9 +1,8 @@
 {
-    "typescript.tsdk": "node_modules\\typescript\\lib",
     "taskExplorer.exclude": [
-        "**/build/**",
-        "**/CompiledOutput/**",
-        "**/dist/**",
-        "**/.vscode/.extensions"
-    ]
+        "**/build/**"
+	],
+	"files.associations": {
+		".env": "ini"
+	}
 }
