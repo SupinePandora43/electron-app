@@ -68,7 +68,7 @@ class App extends React.Component {
 				<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
 				<header className="App-header">
 					<img src={logo} className="App-logo" alt="logo" />
-					<h1 className="App-title">TypeScript + React + Hot reload (Slow) + Debug asa</h1>
+					<h1 className="App-title">TypeScript + React + Hot reload (Slow) + Debug</h1>
 				</header>
 				<Button id="App-button" className="App-button" variant="contained" color="primary">Message</Button>
 				<p ref={(node) => { this.counter = node as HTMLParagraphElement }} className="counter">0</p>
