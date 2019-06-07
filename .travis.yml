@@ -15,8 +15,9 @@ script:
 - yarn coverage
 deploy:
   provider: pages
-  skip_cleanup: true
+  skip-cleanup: true
   github_token: $GITHUB_TOKEN
+  keep-history: true
   local_dir: build
   on:
     branch: master
