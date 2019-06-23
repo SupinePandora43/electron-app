@@ -6,5 +6,10 @@
 [![codebeat badge](https://codebeat.co/badges/4351fc8e-a832-439e-84b9-f3594827921e)](https://codebeat.co/projects/github-com-supinepandora43-electron-app-master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/SupinePandora43/electron-app.svg)](https://greenkeeper.io/)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=SupinePandora43/electron-app)](https://dependabot.com)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FSupinePandora43%2Felectron-app.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FSupinePandora43%2Felectron-app?ref=badge_shield)
 
 electron-app with react
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FSupinePandora43%2Felectron-app.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FSupinePandora43%2Felectron-app?ref=badge_large)
