@@ -9,10 +9,14 @@ branches:
   - master
 install:
 - yarn install
+before_script:
+- "curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | sudo bash"
 script:
 - yarn build
 - yarn test || echo "Hello World!"
 - yarn coverage
+- fossa init
+- fossa analyze
 deploy:
   provider: pages
   skip_cleanup: true
