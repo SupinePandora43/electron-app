@@ -25,3 +25,5 @@ deploy:
   local_dir: build
   on:
     branch: master
+notifications:
+  webhooks: https://app.fossa.io/hooks/travisci
