@@ -1,1 +1,0 @@
-start /B code.exe --extensionHomePath="E:/vscode_extensions"
