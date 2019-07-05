@@ -26,8 +26,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-google-charts": "^3.0.13",
-    "three": "^0.106.2",
-    "30-seconds-of-code": "^1.2.3"
+    "three": "^0.106.2"
   },
 	"scripts": {
 		"test": "cross-env NODE_ENV=development react-app-rewired test --coverage --scripts-version react-scripts-ts --env=jsdom",
