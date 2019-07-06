@@ -8,11 +8,10 @@ branches:
   only:
   - master
 install:
+- yarn global add gulp-cli
 - yarn install
 script:
-- yarn build
-- yarn test || echo "Hello World!"
-- yarn coverage
+- gulp travis
 deploy:
   provider: pages
   skip_cleanup: true

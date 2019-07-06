@@ -39,7 +39,7 @@ module.exports = function override(config, env) {
 	}
 	const chalk = require("chalk");
 	config.plugins = (config.plugins || []).concat([
-		new require("progress-bar-webpack-plugin")({ format: ` [:current/:total] :percent :elapsed seconds [${chalk.green.bold(":bar")}] :msg \n`, clear:true })
+		new require("progress-bar-webpack-plugin")({ format: ` [:current/:total] :percent :elapsed seconds [${chalk.green.bold(":bar")}] :msg `, clear:true })
 	])
 	return config;
 }
