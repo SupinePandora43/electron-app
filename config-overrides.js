@@ -37,5 +37,9 @@ module.exports = function override(config, env) {
 			reportFilename: "./../report.html"
 		})
 	}
+	const chalk = require("chalk");
+	config.plugins = (config.plugins || []).concat([
+		new require("progress-bar-webpack-plugin")({ format: ` [:current/:total] :percent :elapsed seconds [${chalk.green.bold(":bar")}] :msg \n`, clear:true })
+	])
 	return config;
 }
