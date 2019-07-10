@@ -6,6 +6,8 @@
 	"main": "src/main.js",
 	"homepage": "https://supinepandora43.github.io/electron-app",
 	"jest": {
+		"coverageDirectory": "./coverage/",
+		"collectCoverage": true,
 		"collectCoverageFrom": [
 			"src/**/*.test.{js,jsx,ts,tsx}",
 			"!**/node_modules/**"
