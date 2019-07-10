@@ -12,6 +12,7 @@ install:
 - yarn install
 script:
 - gulp travis
+- yarn coverage
 deploy:
   provider: pages
   skip_cleanup: true
