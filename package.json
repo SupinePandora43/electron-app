@@ -31,7 +31,7 @@
 		"three": "^0.106.2"
 	},
 	"scripts": {
-		"test": "cross-env NODE_ENV=development react-app-rewired test --coverage --scripts-version react-scripts-ts --env=jsdom & true",
+		"test": "cross-env NODE_ENV=development react-app-rewired test --coverage --scripts-version react-scripts-ts --env=jsdom || true",
 		"coverage": "codecov",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build",
