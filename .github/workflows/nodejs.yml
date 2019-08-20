@@ -18,5 +18,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: npm
       run: |
+        npm install
         npm run ci
         npm run coverage
