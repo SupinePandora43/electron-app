@@ -38,7 +38,8 @@
 		"start": "cross-env NODE_ENV=development react-app-rewired start --scripts-version react-scripts-ts",
 		"electron": "electron .",
 		"build": "cross-env NODE_ENV=production GENERATE_SOURCEMAP=false react-app-rewired build --scripts-version react-scripts-ts",
-		"analyze": "cross-env ANALYZE=true npm run build"
+		"analyze": "cross-env ANALYZE=true npm run build",
+		"ci": "gulp travis"
 	},
 	"devDependencies": {
 		"@types/animejs": "^3.1.0",
