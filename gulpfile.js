@@ -17,6 +17,6 @@ task("travis",
 	series(
 		"build",
 		"test",
-		"coverage"
+		//"coverage"
 	)
 )
